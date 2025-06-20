@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Especial - Material Gráfico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 5px;
+            }
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .urgencia {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .produto-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .produto-header {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .opcoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .opcao-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .opcao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #4CAF50;
+        }
+
+        .quantidade {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .descricao {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .preco {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .economia {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-whatsapp:hover {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .destaque {
+            border-color: #ff6b6b !important;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+        }
+
+        .destaque::before {
+            content: "MAIS ECONÔMICO";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: bold;
+            transform: rotate(8deg);
+            z-index: 10;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .observacoes {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .timer {
+            font-size: 18px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .especificacao {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 ORÇAMENTO ESPECIAL</h1>
+            <p class="subtitle">Material Gráfico Profissional - Preços Promocionais</p>
+            <div class="urgencia">
+                ⚠️ ATENÇÃO: Estes preços são válidos apenas até o final desta semana!
+                <div class="timer">⏰ Oferta por tempo limitado!</div>
+            </div>
+        </div>
+
+        <div class="produto-section">
+            <div class="produto-header">
+                📇 CARTÕES DE VISITA
+            </div>
+            <div class="opcoes-grid">
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Verso em branco<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 106,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,106</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente, verso branco - R$ 106,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Preto e branco no verso (4x1)<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 111,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,111</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente, preto e branco verso - R$ 111,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico frente e verso (4x4 CMYK)<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 116,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,116</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente e verso - R$ 116,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">3.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Verso em branco<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 231,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,077</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 3.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente, verso branco - R$ 231,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">3.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Preto e branco no verso (4x1)<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 243,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,081</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 3.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente, preto e branco verso - R$ 243,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">3.000 unidades</div>
+                    <div class="especificacao">Cartão 8,8 x 4,8cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 250g<br>
+                        • Fotográfico frente e verso (4x4 CMYK)<br>
+                        • Verniz UV total na frente<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 264,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,088</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 3.000 Cartões de Visita 8,8x4,8cm - Fotográfico frente e verso - R$ 264,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto-section">
+            <div class="produto-header">
+                📄 PANFLETOS
+            </div>
+            <div class="opcoes-grid">
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Verso em branco<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 139,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,139</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Panfletos 14x10cm - Fotográfico frente, verso branco - R$ 139,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Preto e branco no verso (4x1)<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 144,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,144</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Panfletos 14x10cm - Fotográfico frente, preto e branco verso - R$ 144,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card">
+                    <div class="quantidade">1.000 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico frente e verso (4x4 CMYK)<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 162,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,162</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 1.000 Panfletos 14x10cm - Fotográfico frente e verso - R$ 162,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">2.500 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Verso em branco<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 235,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,094</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 2.500 Panfletos 14x10cm - Fotográfico frente, verso branco - R$ 235,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">2.500 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico na frente (4x0 CMYK)<br>
+                        • Preto e branco no verso (4x1)<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 241,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,096</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 2.500 Panfletos 14x10cm - Fotográfico frente, preto e branco verso - R$ 241,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+
+                <div class="opcao-card destaque">
+                    <div class="quantidade">2.500 unidades</div>
+                    <div class="especificacao">Panfleto 14 x 10cm</div>
+                    <div class="descricao">
+                        • Papel Couchê 90g<br>
+                        • Fotográfico frente e verso (4x4 CMYK)<br>
+                        • Sem verniz<br>
+                        • Arte inclusa + intermediação
+                    </div>
+                    <div class="preco">R$ 253,00</div>
+                    <div class="economia">Custo por unidade: R$ 0,101</div>
+                    <a href="https://wa.me/5511958588616?text=Olá! Gostaria de encomendar: 2.500 Panfletos 14x10cm - Fotográfico frente e verso - R$ 253,00" class="btn-whatsapp">📱 ENCOMENDE AGORA</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🚨 ÚLTIMA CHANCE COM ESSES PREÇOS!</h3>
+            <p>Cara, não deixa passar essa oportunidade! Os preços da gráfica vão reajustar na próxima semana e sinceramente, não sei quando vou conseguir te oferecer algo assim de novo.</p>
+            
+            <div class="observacoes">
+                <h4>✅ O que está incluso:</h4>
+                <p>• Criação profissional da arte em PDF-X1a<br>
+                • Revisão e ajustes necessários<br>
+                • Prazo de produção: 3-5 dias úteis</p>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 10px; border-left: 5px solid #ffc107;">
+                <strong>💡 Dica de amigo:</strong> As quantidades maiores compensam MUITO! Olha só a economia por unidade nas opções destacadas. É praticamente metade do preço!
+            </div>
+
+            <div style="margin-top: 20px; font-size: 14px; color: #666;">
+                <strong>Fale comigo até sexta-feira para garantir esses preços!</strong><br>
+                Depois disso os valores sobem e não tenho como segurar mais.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
